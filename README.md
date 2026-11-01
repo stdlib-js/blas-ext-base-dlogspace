@@ -35,32 +35,14 @@ limitations under the License.
 
 > Fill a double-precision floating-point strided array with logarithmically spaced values over a specified interval.
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/blas-ext-base-dlogspace
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-var dlogspace = require( '@stdlib/blas-ext-base-dlogspace' );
+import dlogspace from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-dlogspace@esm/index.mjs';
 ```
 
 #### dlogspace( N, base, start, stop, endpoint, x, strideX )
@@ -68,7 +50,7 @@ var dlogspace = require( '@stdlib/blas-ext-base-dlogspace' );
 Fills a double-precision floating-point strided array with logarithmically spaced values over a specified interval.
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
 var x = new Float64Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
@@ -89,7 +71,7 @@ The function has the following parameters:
 The `N` and stride parameters determine which elements in the strided array are accessed at runtime. For example, to fill every other element:
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
 var x = new Float64Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
@@ -100,7 +82,7 @@ dlogspace( 4, 10.0, 0.0, 3.0, true, x, 2 );
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
 // Initial array...
 var x0 = new Float64Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
@@ -118,7 +100,7 @@ dlogspace( 3, 10.0, 0.0, 2.0, true, x1, 2 );
 Fills a double-precision floating-point strided array with logarithmically spaced values over a specified interval using alternative indexing semantics.
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
 var x = new Float64Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
@@ -133,7 +115,7 @@ The function has the following additional parameters:
 While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying buffer, the offset parameter supports indexing semantics based on a starting index. For example, to access only the last three elements:
 
 ```javascript
-var Float64Array = require( '@stdlib/array-float64' );
+import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
 var x = new Float64Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
@@ -160,7 +142,7 @@ dlogspace.ndarray( 3, 10.0, 0.0, 2.0, true, x, 1, x.length-3 );
 -   When the number of generated values is greater than `1` and `endpoint` is `true`, the set of values written to a provided input array is guaranteed to include the `base^start` and `base^stop` values. Beware, however, that values between `base^start` and `base^stop` are subject to floating-point rounding errors. Hence,
 
     ```javascript
-    var Float64Array = require( '@stdlib/array-float64' );
+    import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
 
     var x = new Float64Array( [ 0.0, 0.0, 0.0 ] );
 
@@ -186,9 +168,14 @@ dlogspace.ndarray( 3, 10.0, 0.0, 2.0, true, x, 1, x.length-3 );
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var dlogspace = require( '@stdlib/blas-ext-base-dlogspace' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+
+import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@esm/index.mjs';
+import dlogspace from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-dlogspace@esm/index.mjs';
 
 var x = discreteUniform( 10, -100, 100, {
     'dtype': 'float64'
@@ -197,6 +184,10 @@ console.log( x );
 
 dlogspace( x.length, 10.0, 0.0, 9.0, true, x, 1 );
 console.log( x );
+
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -205,137 +196,7 @@ console.log( x );
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/blas/ext/base/dlogspace.h"
-```
-
-#### stdlib_strided_dlogspace( N, base, start, stop, endpoint, \*X, strideX )
-
-Fills a double-precision floating-point strided array with logarithmically spaced values over a specified interval.
-
-```c
-#include <stdbool.h>
-
-double x[] = { 0.0, 0.0, 0.0, 0.0 };
-
-stdlib_strided_dlogspace( 4, 10.0, 0.0, 3.0, true, x, 1 );
-```
-
-The function accepts the following arguments:
-
--   **N**: `[in] CBLAS_INT` number of indexed elements.
--   **base**: `[in] double` base of the logarithmic scale.
--   **start**: `[in] double` exponent of the starting value.
--   **stop**: `[in] double` exponent of the final value.
--   **endpoint**: `[in] bool` boolean indicating whether to include the `base^stop` value when writing values to the input array. If `true`, the input array is filled with logarithmically spaced values over the closed interval `[base^start, base^stop]`. If `false`, the input array is filled with logarithmically spaced values over the half-open interval `[base^start, base^stop)`.
--   **X**: `[out] double*` input array.
--   **strideX**: `[in] CBLAS_INT` stride length.
-
-```c
-void stdlib_strided_dlogspace( const CBLAS_INT N, const double base, const double start, const double stop, const bool endpoint, double *X, const CBLAS_INT strideX );
-```
-
-<!-- lint disable maximum-heading-length -->
-
-#### stdlib_strided_dlogspace_ndarray( N, base, start, stop, endpoint, \*X, strideX, offsetX )
-
-<!-- lint enable maximum-heading-length -->
-
-Fills a double-precision floating-point strided array with logarithmically spaced values over a specified interval using alternative indexing semantics.
-
-```c
-#include <stdbool.h>
-
-double x[] = { 0.0, 0.0, 0.0, 0.0 };
-
-stdlib_strided_dlogspace_ndarray( 4, 10.0, 0.0, 3.0, true, x, 1, 0 );
-```
-
-The function accepts the following arguments:
-
--   **N**: `[in] CBLAS_INT` number of indexed elements.
--   **base**: `[in] double` base of the logarithmic scale.
--   **start**: `[in] double` exponent of the starting value.
--   **stop**: `[in] double` exponent of the final value.
--   **endpoint**: `[in] bool` boolean indicating whether to include the `base^stop` value when writing values to the input array. If `true`, the input array is filled with logarithmically spaced values over the closed interval `[base^start, base^stop]`. If `false`, the input array is filled with logarithmically spaced values over the half-open interval `[base^start, base^stop)`.
--   **X**: `[out] double*` input array.
--   **strideX**: `[in] CBLAS_INT` stride length.
--   **offsetX**: `[in] CBLAS_INT` starting index.
-
-```c
-void stdlib_strided_dlogspace_ndarray( const CBLAS_INT N, const double base, const double start, const double stop, const bool endpoint, double *X, const CBLAS_INT strideX, const CBLAS_INT offsetX );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/blas/ext/base/dlogspace.h"
-#include <stdio.h>
-#include <stdbool.h>
-
-int main( void ) {
-    // Create a strided array:
-    double x[] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-
-    // Specify the number of indexed elements:
-    const int N = 8;
-
-    // Specify a stride:
-    const int strideX = 1;
-
-    // Fill the array:
-    stdlib_strided_dlogspace( N, 10.0, 0.0, 7.0, true, x, strideX );
-
-    // Print the result:
-    for ( int i = 0; i < 8; i++ ) {
-        printf( "x[ %i ] = %lf\n", i, x[ i ] );
-    }
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -354,7 +215,7 @@ int main( void ) {
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -417,7 +278,7 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-dlogspace/main/LICENSE
 
-[@stdlib/array/float64]: https://github.com/stdlib-js/array-float64
+[@stdlib/array/float64]: https://github.com/stdlib-js/array-float64/tree/esm
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
